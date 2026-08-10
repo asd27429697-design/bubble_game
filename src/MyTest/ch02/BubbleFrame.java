@@ -1,4 +1,4 @@
-package MyTest._test02;
+package MyTest.ch02;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -8,6 +8,7 @@ public class BubbleFrame extends JFrame {
 
     private JLabel backgroundMap;
     private Player player;
+    private JumpTest jumpTest;
 
     public BubbleFrame() {
         initData();
@@ -22,6 +23,7 @@ public class BubbleFrame extends JFrame {
         backgroundMap = new JLabel(new ImageIcon("images/backgroundMap.png"));
         setContentPane(backgroundMap); // 루트 패널에 jLabel 설정
         player = new Player();
+        jumpTest = new JumpTest();
     }
 
     private void setInitLayout() {
@@ -31,6 +33,7 @@ public class BubbleFrame extends JFrame {
 
         add(player);
         setVisible(true);
+
     }
 
     private void addEventListener() {
@@ -48,7 +51,7 @@ public class BubbleFrame extends JFrame {
                         player.right();
                         break;
                     case KeyEvent.VK_UP:
-                        player.up();
+                        jumpTest.jump(player);
                         break;
                 }
             }

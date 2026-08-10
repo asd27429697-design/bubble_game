@@ -55,7 +55,20 @@ public class BubbleFrame extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
+                System.out.println("keyReleased: " + e.getKeyCode());
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_LEFT :
+                        // 왼쪽으로 가고 있다가 방향키를 때면 -- while문을 멈추는 동작이 필요하다.
+                        player.setLeft(false); // 돌아가고 있던 while 문이 false가 되어서 멈추게 된다.
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        // 오른쪽으로 가고 있다가 방향키를 때면 -- while문을 멈추는 동작이 필요하다.
+                        player.setRight(false); // 돌아가고 있던 while 문이 false가 되어서 멈추게 된다.
+                        break;
+                    case KeyEvent.VK_UP:
+
+                        break;
+                }
             }
         });
     }

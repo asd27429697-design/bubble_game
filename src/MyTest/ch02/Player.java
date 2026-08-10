@@ -1,4 +1,4 @@
-package MyTest._test02;
+package MyTest.ch02;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.swing.*;
 
 @Getter
+@Setter
 public class Player extends JLabel implements Moveable {
 
     private int x;
