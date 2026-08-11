@@ -1,4 +1,4 @@
-package MyTest.ch02;
+package _test03;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +27,13 @@ public class Player extends JLabel implements Moveable {
     private boolean up;
     private boolean down;
 
+    // 플레이어의 벽 충돌 상태
+    @Setter
+    private boolean leftWallCrash;
+    @Setter
+    private boolean rightWallCrash;
+
+
     public Player() {
         initData();
         setInitLayout();
@@ -54,20 +61,16 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void left() {
-
         left = true;
         setIcon(playerL);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (left) {
-                    x = x - SPEED;
-                    setLocation(x, y);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+        new Thread(() -> {
+            while (left) {
+                x = x - SPEED;
+                setLocation(x, y);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
@@ -77,17 +80,14 @@ public class Player extends JLabel implements Moveable {
     public void right() {
         right = true;
         setIcon(playerR);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (right) {
-                    x = x + SPEED;
-                    setLocation(x, y);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+        new Thread(() -> {
+            while (right) {
+                x = x + SPEED;
+                setLocation(x, y);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
