@@ -1,4 +1,4 @@
-package _test06;
+package _test07;
 
 import lombok.Getter;
 
